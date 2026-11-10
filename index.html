@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEKSIYALAR 2026 | BAZA</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f4f2;--sf:#fff;--ink:#16252a;--mute:#5a6b70;--line:#d3dbd8;--ac:#0e5c61;--acink:#fff;--warn:#b3480a;--ok:#1f7a45;--bad:#b3261e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1b1e;--sf:#16272b;--ink:#e6eeec;--mute:#93a5a8;--line:#2a3f44;--ac:#5cc0c6;--acink:#08272a;--warn:#f0a064;--ok:#6fd199;--bad:#f28b82;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1b1e;--sf:#16272b;--ink:#e6eeec;--mute:#93a5a8;--line:#2a3f44;--ac:#5cc0c6;--acink:#08272a;--warn:#f0a064;--ok:#6fd199;--bad:#f28b82;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(1.9rem,6vw,2.6rem);font-weight:700}
+h2{font-size:1.35rem;font-weight:500}
+main{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:20px}
+.mute{color:var(--mute)}
+input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px}
+textarea{min-height:170px;resize:vertical}
+input:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+button{font:inherit;font-weight:600;cursor:pointer;border-radius:8px;border:1px solid var(--ac);background:var(--ac);color:var(--acink);padding:12px 20px}
+button.ghost{background:transparent;color:var(--ac)}
+button:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:12}
+.bar div{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.timer{font:600 1.4rem Newsreader,Georgia,serif;font-variant-numeric:tabular-nums}
+.timer.low{color:var(--warn)}
+.opt{display:flex;gap:12px;width:100%;text-align:left;background:var(--sf);color:var(--ink);border:1px solid var(--line);margin:0 0 10px;padding:14px}
+.opt b{min-width:1.4em;color:var(--ac)}
+.opt.on{border:2px solid var(--ac);background:color-mix(in srgb,var(--ac) 12%,var(--sf));padding:13px}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.dots button{padding:0;width:34px;height:34px;background:var(--sf);color:var(--ink);border-color:var(--line);font-size:.9rem}
+.dots .done{background:var(--ac);color:var(--acink);border-color:var(--ac)}
+.dots .cur{outline:3px solid var(--ac);outline-offset:1px}
+.case{margin-bottom:22px}
+.err{color:var(--bad);min-height:1.5em;margin:8px 0 0}
+.warn{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+.wrap{overflow-x:auto}
+details{border:1px solid var(--line);border-radius:8px;background:var(--sf);margin:10px 0;padding:10px 14px}
+summary{cursor:pointer;font-weight:600}
+.ans{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;margin:6px 0 12px}
+.mk{width:80px}
+</style>
+</head>
+<body>
+<div id="top"></div>
+<main id="app"><p class="mute">Yuklanmoqda…</p></main>
+<script>
+const NAMES=["Nozanin","Umida","Gulnoza","Yashnarbek","Samariddin","Yasmina","Nazarbek"];
+const SEC=900,L=["A","B","C","D"];
+const Q=[["Respublikada yuqumli kasallik tarqalish xavfi sababli inson hayoti va sog’lig’ini himoya qilish uchun qonunchilik bilan quyidagilardan qaysi birining harakatini cheklash mumkin? (FK, 1-modda, 4-qism)", ["Moliyaviy mablag’lar harakatini", "Moliyaviy mablag’lar va xizmatlar harakatini", "Tovarlar va xizmatlar harakatini", "Tovarlar va moliyaviy mablag’lar harakatini"], 2], ["Korxona va soliq organi o’rtasida soliq to’lash bo’yicha mulkiy munosabat vujudga keldi. Bu munosabat taraflardan birining ikkinchisiga ma’muriy bo’ysunishiga asoslangan. Unga nisbatan fuqarolik qonunchiligi: (FK, 2-modda)", ["Taraflar kelishuviga ko’ra qo’llaniladi", "Sud qaroriga ko’ra qo’llaniladi", "To’liq hajmda qo’llaniladi", "Qonunda nazarda tutilgan hollarda qo’llaniladi"], 3], ["2021-yil mart oyida ikki tadbirkor o’rtasida shartnoma tuzildi. 2023-yilda taraflar uchun majburiy bo’lgan, boshqacha qoidalar belgilovchi yangi qonun qabul qilindi. Unda uning avval tuzilgan shartnomalarga tatbiq etilishi ko’rsatilmagan. Shartnoma shartlari: (FK, 4-modda, 4-qism)", ["Yangi qonunga muvofiq o’zgaradi", "O’z kuchini saqlab qoladi", "Sud qarori bilan qayta ko’riladi", "Taraflar roziligisiz bekor bo’ladi"], 1], ["Sud nizoni ko’rishda qonunchilikda to’g’ridan-to’g’ri norma yo’qligini aniqladi va javobgarlik belgilovchi normani o’xshash munosabatga tatbiq etmoqchi bo’ldi. Fuqarolik qonunchiligiga ko’ra bu: (FK, 5-modda, 3-qism)", ["Yo’l qo’yilmaydi", "Qonun o’xshashligi asosida mumkin", "Huquq o’xshashligi asosida mumkin", "Taraflar roziligi bilan mumkin"], 0], ["Sardor uy-joy oldi-sotdi shartnomasini tuzdi, pulni to’ladi, uyni qabul qilib oldi, keyin huquqini davlat ro’yxatidan o’tkazdi. Qonunda boshqacha tartib nazarda tutilmagan. Uning mulk huquqi qaysi paytdan vujudga keladi? (FK, 8-modda; 84-modda)", ["Shartnoma tuzilgan paytdan", "To’lov amalga oshirilgan paytdan", "Davlat ro’yxatidan o’tkazilgan paytdan", "Uy topshirilgan paytdan"], 2], ["Dilnoza 17 yoshida qonuniy asosda nikohdan o’tdi. Nikoh 17 yoshu 8 oyligida bekor qilindi. Uning muomala layoqati: (FK, 22-modda, 3-qism)", ["18 yoshgacha cheklanadi", "To’la hajmda saqlanib qoladi", "Nikoh bekor bo’lgan paytda tugaydi", "Sud qarori bilan to’xtatiladi"], 1], ["Sud Hasanning spirtli ichimliklarni suiiste’mol qilib, oilasini og’ir moddiy ahvolga solayotganini aniqladi va uning muomala layoqatini cheklab qo’ydi. Hasanning huquqiy holati: (FK, 31-modda, 1-qism)", ["Vasiylik belgilanadi, bitimlarni vasiy tuzadi", "Vasiylik belgilanadi, mayda maishiy bitim tuza oladi", "Homiylik belgilanadi, bitimlarni homiy tuzadi", "Homiylik belgilanadi, mayda maishiy bitim tuza oladi"], 3], ["Fuqaroning qayerdaligi haqida yashash joyida bir yil davomida ma’lumot yo’q. Oxirgi ma’lumot 2024-yil mart oyida olingan, ammo aniq kun noma’lum. Bedarak yo’qolgan deb hisoblash muddati qaysi sanadan boshlanadi? (FK, 33-modda, 2-qism)", ["2024-yil 1-aprel", "2024-yil 1-mart", "2024-yil 31-mart", "2025-yil 1-yanvar"], 0], ["Kommandit shirkatning hissa qo’shuvchisi Aziz o’z nomini shirkatning firma nomiga kiritdi. Aziz: (FK, 61-modda)", ["Hissasi doirasida javobgar bo’lib qoladi", "Ishtirokchi maqomini yo’qotadi", "To’liq sherikka aylanadi", "Faoliyatda qatnashmaydigan sherik bo’ladi"], 2], ["Mas’uliyati cheklangan jamiyat ishtirokchisi Ali o’z hissasining yarmini qo’shgan. Jamiyat qarzdor bo’lib qoldi. Ali jamiyat majburiyatlari bo’yicha qanday javob beradi? (FK, 62-modda, 2-qism)", ["Butun mol-mulki bilan", "Hissaning to’lanmagan qismi doirasida solidar", "Qo’shilgan hissa doirasida subsidiar", "Javobgar bo’lmaydi"], 1], ["A jamiyat B jamiyatning ovoz beruvchi aksiyalarining aynan 20 foiziga ega. B jamiyat qaram xo’jalik jamiyati hisoblanadimi? (FK, 68-modda, 1-qism)", ["Ha, 20 foiz yetarli", "Ha, agar sud shunday topsa", "Yo’q, 50 foizdan ko’prog’i talab etiladi", "Yo’q, 20 foizdan ko’prog’i talab etiladi"], 3], ["Matlubot kooperativi yil yakunida zarar ko’rdi. A’zolar zararni qanday muddatda qoplashi shart va bajarilmasa nima bo’ladi? (FK, 73-modda, 4-qism)", ["Balans tasdiqlangach 3 oyda; sud tugatishi mumkin", "Balans tasdiqlangach 3 oyda; ustav o’zgartiriladi", "Balans tasdiqlangach 6 oyda; a’zolar chiqariladi", "Balans tasdiqlangach 1 oyda; jarima undiriladi"], 0], ["Davlat tomonidan tuzilgan yuridik shaxs to’lovga qobiliyatsiz bo’lib qoldi. Davlat uning majburiyatlari bo’yicha qachon javob beradi? (FK, 80-modda, 1- va 2-qism)", ["Yuridik shaxsni tuzgan har qanday holda", "Mol-mulk davlat mablag’idan olinganda", "Kafillik yoki kafolat bergan hollarda", "Kreditor sudga murojaat qilgan hollarda"], 2], ["Fermer omborida 500 kg bug’doy (soni va og’irligi bilan belgilanadi) va bir dona noyob, muhr bosilgan traktor bor. Quyidagi tasniflardan qaysi biri to’g’ri? (FK, 87-modda; 89-modda)", ["Bug’doy iste’mol qilinmaydigan, traktor iste’mol qilinadigan", "Bug’doy turga xos, traktor xususiy alomatli", "Ikkalasi ham turga xos alomatli", "Ikkalasi ham iste’mol qilinadigan"], 1], ["Avtomobil sotilganda uning ehtiyot g’ildiragi va asboblar to’plami haqida shartnomada boshqacha tartib belgilanmagan. Bu ashyolarning taqdiri qanday bo’ladi? (FK, 90-modda, 3-qism)", ["Sotuvchida qoladi", "Alohida bitim talab qilinadi", "Xaridor tanloviga bog’liq bo’ladi", "Avtomobil bilan birga o’tadi"], 3]];
+const CASES=["1-case. Rustam ruhiy kasalligi oqibatida o’z harakatlarining ahamiyatini tushunmaydi. Sud uni muomalaga layoqatsiz deb topdi va unga vasiy belgiladi. Vasiy Rustamga tegishli uyni sotdi, ammo davlat ro’yxatidan o’tkazuvchi organ ro’yxatdan o’tkazishni rad etdi. Bir yildan keyin Rustam davolanib, layoqatsizlik sabablari bekor bo’ldi. Bitimni Rustam nomidan kim tuzadi? Ro’yxatdan o’tkazish rad etilsa, vasiy qayerga murojaat qilishi mumkin? Rustam sog’ayganda sud qanday qaror qabul qiladi va vasiylikning taqdiri qanday bo’ladi? FK 30 va 84-moddalari asosida yozing.", "2-case. \"Alfa\" xo’jalik jamiyati \"Beta\" jamiyatning ustav fondida ustunlik mavqeyiga ega bo’lib, uning qarorlarini belgilab beradi. \"Alfa\"ning aybi bilan \"Beta\" to’lovga qobiliyatsiz bo’lib qoldi. Kreditorlar \"Beta\"ning qarzlarini \"Alfa\"dan talab qilmoqda, \"Alfa\"ning o’z kreditorlari esa \"Beta\"ga da’vo qilmoqda. \"Beta\" qanday maqomga ega va uning qarzlari uchun kim, qanday tartibda javob beradi? \"Beta\" \"Alfa\"ning qarzlari bo’yicha javob beradimi? \"Beta\" ishtirokchilari qanday huquqqa ega? \"Beta\" \"Alfa\" ustav fondidagi ulushga ega bo’la oladimi? FK 67-moddasi asosida yozing.", "3-case. Karim va Sanjar o’zaro shartnoma tuzib \"Karim va Sanjar\" to’liq shirkatini tashkil etdi. Karim shu paytgacha boshqa to’liq shirkatda ham ishtirokchi bo’lgan. Shirkat yetkazib beruvchiga veksel berdi, yetkazib beruvchi esa vekselni uchinchi shaxsga topshirdi. Shirkat qarzini to’lay olmadi. Karimning ikkinchi shirkatdagi ishtiroki qonuniymi? Shirkat majburiyatlari bo’yicha ishtirokchilar qanday javob beradi? Veksel qanday hujjat, uni topshirish natijasida huquqlar kimga o’tadi va bu huquqlarni amalga oshirish uchun nima qilish kerak? FK 60 va 96-moddalari asosida yozing."];
+const $=s=>document.querySelector(s),app=$("#app");
+const norm=s=>s.trim().replace(/\s+/g," ").toLocaleLowerCase("uz");
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const mmss=t=>{t=Math.max(0,t);return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+let S=(()=>{try{return JSON.parse(localStorage.getItem("baza26fk"))||{}}catch(e){return{}}})();
+const keep=()=>{try{localStorage.setItem("baza26fk",JSON.stringify(S))}catch(e){}};
+let db=null,uid=null,tid=null,unsub=null,rows=[],drafts={},open={};
+const ready=(async()=>{try{const u=await claude.use("user");uid=u?await u.id():null;db=await claude.use("db")}catch(e){}})();
+
+async function flush(){
+  const el=$("#sync");
+  if(!db||!uid){if(el)el.textContent="Natija serverga yuborilmadi: tizimga kirmagansiz.";return false}
+  try{await db.doc("results/"+uid).set(S.D);S.sent=true;keep();if(el)el.textContent="";return true}
+  catch(e){S.sent=false;keep();if(el)el.textContent="Natija serverga yuborilmadi. Internetni tekshirib, qayta yuboring.";return false}
+}
+function save(o){S.D=Object.assign(S.D||{name:S.name},o);keep();return flush()}
+
+function route(){
+  clearInterval(tid);if(unsub){unsub();unsub=null}
+  if(location.hash==="#admin")return admin();
+  student();
+}
+addEventListener("hashchange",route);
+ready.then(route);route();
+
+function student(){
+  if(!S.name||S.phase==="login"||!S.phase)return login();
+  if(S.phase==="intro")return intro();
+  if(S.phase==="test")return test();
+  if(S.phase==="cases")return cases();
+  return finished();
+}
+function login(msg){
+  app.innerHTML=`<h1>LEKSIYALAR 2026 | BAZA</h1><p class="mute">Fuqarolik kodeksi (1-qism) boʻyicha nazorat testi.</p>
+  <div class="card"><label for="nm"><b>Ismingiz</b></label><input id="nm" type="text" autocomplete="off" placeholder="Ismni yozing" style="margin-top:8px"><p class="err" id="e">${msg||""}</p>
+  <div class="row"><button id="go">Kirish</button></div></div>`;
+  const go=()=>{const v=$("#nm").value,n=NAMES.find(x=>norm(x)===norm(v));
+    if(!n){$("#e").textContent="Bu ism ruxsat etilganlar roʻyxatida yoʻq.";return}
+    if(S.name===n&&S.phase&&S.phase!=="login")return student();
+    S={name:n,phase:"intro"};keep();student()};
+  $("#go").onclick=go;$("#nm").onkeydown=e=>{if(e.key==="Enter")go()};
+}
+function intro(){
+  app.innerHTML=`<h1>Salom, ${esc(S.name)}</h1><div class="card"><p><b>Qoidalar</b></p>
+  <p>1. Test: ${Q.length} ta savol, jami 15 daqiqa. Vaqt “Boshlash” tugmasi bosilganda ketadi va toʻxtatilmaydi.<br>
+  2. Savollar orasida erkin oʻtishingiz mumkin. Vaqt tugasa, test avtomatik yakunlanadi.<br>
+  3. Testdan keyin 3 ta case chiqadi. Javoblarni klaviaturada yozasiz, ularni keyinroq admin tekshiradi.<br>
+  4. Testni faqat bir marta topshirish mumkin.</p>
+  <div class="row"><button id="st">Boshlash</button></div></div>`;
+  $("#st").onclick=()=>{S.phase="test";S.start=Date.now();S.ans=Q.map(()=>-1);S.i=0;keep();
+    save({name:S.name,startedAt:S.start,status:"test"});test()};
+}
+function left(){return SEC-Math.floor((Date.now()-S.start)/1000)}
+function test(){
+  if(left()<=0)return finishTest();
+  const i=S.i,q=Q[i];
+  app.innerHTML=`<div class="bar"><div><span class="mute">Savol ${i+1} / ${Q.length}</span><span class="timer" id="tm">${mmss(left())}</span></div></div>
+  <div class="card" style="margin-top:16px"><h2>${i+1}. ${esc(q[0])}</h2>
+  ${q[1].map((o,k)=>`<button class="opt ${S.ans[i]===k?"on":""}" data-k="${k}"><b>${L[k]})</b><span>${esc(o)}</span></button>`).join("")}</div>
+  <div class="dots">${Q.map((_,k)=>`<button data-j="${k}" class="${S.ans[k]>=0?"done":""} ${k===i?"cur":""}" aria-label="Savol ${k+1}">${k+1}</button>`).join("")}</div>
+  <div class="row"><button class="ghost" id="pv" ${i===0?"disabled":""}>Oldingi</button>
+  ${i<Q.length-1?`<button id="nx">Keyingi</button>`:`<button id="fn">Testni yakunlash</button>`}</div>`;
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{S.ans[i]=+b.dataset.k;keep();test()});
+  app.querySelectorAll(".dots button").forEach(b=>b.onclick=()=>{S.i=+b.dataset.j;keep();test()});
+  $("#pv").onclick=()=>{S.i--;keep();test()};
+  if($("#nx"))$("#nx").onclick=()=>{S.i++;keep();test()};
+  if($("#fn"))$("#fn").onclick=()=>{const n=S.ans.filter(a=>a<0).length;
+    if(!n||confirm(n+" ta savolga javob berilmagan. Baribir yakunlaymizmi?"))finishTest()};
+  clearInterval(tid);tid=setInterval(()=>{const t=left(),e=$("#tm");
+    if(t<=0){finishTest();return}if(e){e.textContent=mmss(t);e.classList.toggle("low",t<=120)}},1000);
+}
+function finishTest(){
+  clearInterval(tid);
+  if(S.phase!=="test")return;
+  S.score=S.ans.reduce((s,a,k)=>s+(a===Q[k][2]?1:0),0);
+  S.used=Math.min(SEC,Math.round((Date.now()-S.start)/1000));S.phase="cases";keep();
+  save({score:S.score,total:Q.length,answers:S.ans,timeUsed:S.used,status:"cases"});
+  cases();
+}
+function cases(){
+  S.cases=S.cases||["","",""];
+  app.innerHTML=`<h1>Case topshiriqlar</h1><p class="mute">Test yakunlandi. Har bir case uchun tegishli moddalarni koʻrsatib, javobni klaviaturada yozing. Vaqt cheklanmagan.</p>
+  ${CASES.map((c,k)=>`<div class="card case"><p>${esc(c)}</p><textarea data-k="${k}" placeholder="Javobingizni shu yerga yozing">${esc(S.cases[k])}</textarea></div>`).join("")}
+  <p class="err" id="sync"></p><div class="row"><button id="sb">Javoblarni yuborish</button></div>`;
+  app.querySelectorAll("textarea").forEach(t=>t.oninput=()=>{S.cases[+t.dataset.k]=t.value;keep()});
+  $("#sb").onclick=async()=>{
+    if(S.cases.some(x=>!x.trim())&&!confirm("Ba’zi caselar boʻsh. Baribir yuboramizmi?"))return;
+    $("#sb").disabled=true;S.phase="done";keep();
+    await save({cases:S.cases,finishedAt:Date.now(),status:"done"});finished()};
+}
+function pack(){const d={name:S.name,score:S.score,total:Q.length,answers:S.ans,timeUsed:S.used,cases:S.cases};return "BAZA1:"+btoa(unescape(encodeURIComponent(JSON.stringify(d))))}
+function finished(){
+  app.innerHTML=`<h1>Topshirildi</h1><div class="card"><p>${esc(S.name)}, javoblaringiz qabul qilindi. Natijalar admin tekshiruvidan keyin maʼlum qilinadi.</p>
+  ${db?"":`<p><b>Muhim:</b> natijangiz adminga yetib borishi uchun quyidagi kodni nusxalab, adminga yuboring.</p><textarea id="cd" readonly rows="4">${pack()}</textarea><div class="row"><button id="cp">Kodni nusxalash</button></div>`}
+  <p class="err" id="sync"></p>${S.sent===false&&db?`<div class="row"><button id="rt">Qayta yuborish</button></div>`:""}</div>`;
+  if($("#cp"))$("#cp").onclick=async()=>{const c=$("#cd");c.select();try{await navigator.clipboard.writeText(c.value)}catch(e){document.execCommand("copy")}$("#cp").textContent="Nusxalandi"};
+  if(S.sent===false&&db){$("#sync").textContent="Natija serverga yuborilmadi.";$("#rt").onclick=async()=>{await flush();if(S.sent)finished()}}
+}
+
+function admin(){
+  app.innerHTML=`<h1>Admin panel</h1><p class="mute" id="am">Natijalar yuklanmoqda…</p><div id="im"></div><div id="ad"></div>`;
+  ready.then(()=>{
+    if(!db)return localAdmin();
+    const tm=setTimeout(()=>{$("#am").textContent="Natijalarni yuklab boʻlmadi."},10000);
+    unsub=db.collection("results").onSnapshot(s=>{clearTimeout(tm);rows=s.docs.map(d=>({id:d.id,...d.data()}));draw()},
+      ()=>{clearTimeout(tm);$("#am").textContent="Ruxsat yoʻq: natijalarni faqat sahifa egasi koʻra oladi."});
+  });
+}
+function localAdmin(){
+  const K="baza26admin",ld=()=>{try{return JSON.parse(localStorage.getItem(K))||{}}catch(e){return{}}};
+  const show=()=>{rows=Object.values(ld());draw()};
+  $("#im").innerHTML=`<div class="card"><p><b>Talabalar kodlarini qoʻshish</b></p><textarea id="kd" rows="4" placeholder="Talabalar yuborgan BAZA1:... kodlarini shu yerga qoʻying (bir nechtasini ketma-ket)"></textarea><p class="err" id="imsg"></p><div class="row"><button id="ad1">Natijalarni qoʻshish</button></div></div>`;
+  $("#ad1").onclick=()=>{const o=ld();let n=0,bad=0;
+    ($("#kd").value.match(/BAZA1:[A-Za-z0-9+\/=]+/g)||[]).forEach(c=>{try{const d=JSON.parse(decodeURIComponent(escape(atob(c.slice(6)))));
+      const old=o[d.name]||{};o[d.name]={id:d.name,name:d.name,score:d.score,answers:d.answers,timeUsed:d.timeUsed,cases:d.cases,status:"done",marks:old.marks};n++}catch(e){bad++}});
+    localStorage.setItem(K,JSON.stringify(o));$("#kd").value="";
+    $("#imsg").textContent=n+" ta natija qoʻshildi"+(bad?", "+bad+" ta kod xato":"")+".";show()};
+  show();
+}
+function draw(){
+  $("#am").textContent="Test: "+Q.length+" ta savol. Case ballari: har biri 0–10.";
+  const by=n=>rows.find(r=>norm(r.name||"")===norm(n));
+  const mk=r=>r&&(drafts[r.id]||r.marks);
+  const trs=NAMES.map(n=>{const r=by(n),m=mk(r);
+    const st=!r?"Kirmagan":r.status==="done"?"Topshirgan":r.status==="cases"?"Case yozmoqda":"Test ishlamoqda";
+    const cs=m&&m.some(x=>x!==""&&x!=null)?m.reduce((a,b)=>a+(+b||0),0)+" / 30":"—";
+    return `<tr><td>${esc(n)}</td><td>${st}</td><td>${r&&r.score!=null?r.score+" / "+Q.length:"—"}</td><td>${r&&r.timeUsed!=null?mmss(r.timeUsed):"—"}</td><td>${cs}</td></tr>`}).join("");
+  const det=NAMES.map(n=>{const r=by(n);if(!r)return"";
+    const wrong=(r.answers||[]).map((a,k)=>a===Q[k][2]?"":`${k+1}-savol: ${a<0?"javobsiz":L[a]}, toʻgʻrisi ${L[Q[k][2]]}`).filter(Boolean);
+    const m=mk(r)||["","",""];
+    return `<details data-id="${r.id}" ${open[r.id]?"open":""}><summary>${esc(r.name)}: ${r.score!=null?r.score+" / "+Q.length:"test yakunlanmagan"}</summary>
+    <p><b>Xato va javobsiz savollar:</b> ${wrong.length?esc(wrong.join("; ")):"yoʻq"}</p>
+    ${CASES.map((c,k)=>`<p><b>${k+1}-case javobi</b></p><div class="ans">${esc((r.cases||[])[k]||"Yozilmagan")}</div>
+    <label>Ball (0–10) <input class="mk" type="number" min="0" max="10" data-id="${r.id}" data-k="${k}" value="${esc(m[k])}"></label>`).join("")}
+    <div class="row"><button data-save="${r.id}">Ballarni saqlash</button></div></details>`}).join("");
+  $("#ad").innerHTML=`<div class="card wrap"><table><tr><th>Ism</th><th>Holat</th><th>Test</th><th>Vaqt</th><th>Case</th></tr>${trs}</table></div>${det}`;
+  $("#ad").querySelectorAll("details").forEach(d=>d.ontoggle=()=>{open[d.dataset.id]=d.open});
+  $("#ad").querySelectorAll(".mk").forEach(i=>i.oninput=()=>{const id=i.dataset.id,r=rows.find(x=>x.id===id);
+    drafts[id]=drafts[id]||(r.marks?r.marks.slice():["","",""]);drafts[id][+i.dataset.k]=i.value});
+  $("#ad").querySelectorAll("[data-save]").forEach(b=>b.onclick=async()=>{const id=b.dataset.save,m=drafts[id];if(!m)return;
+    try{const mm=m.map(x=>x===""?"":Math.min(10,Math.max(0,+x||0)));
+      if(db)await db.doc("results/"+id).update({marks:mm});
+      else{const o=JSON.parse(localStorage.getItem("baza26admin")||"{}");o[id].marks=mm;localStorage.setItem("baza26admin",JSON.stringify(o));rows.find(x=>x.id===id).marks=mm}
+      delete drafts[id];b.textContent="Saqlandi"}
+    catch(e){b.textContent="Saqlanmadi, qayta urining"}});
+}
+</script>
+</body>
+</html>
